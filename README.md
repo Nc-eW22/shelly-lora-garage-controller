@@ -1,4 +1,5 @@
-Project Share: The Intelligent Shelly LoRa Garage Controller (v5.0)
+The Intelligent Shelly LoRa Garage Controller (v5.0)
+
 Hello Shelly Community!
 
 I'm excited to share the final version of a project I've been developing: a highly reliable, LoRa-based garage door controller. After extensive testing and refinement, it's now a robust and feature-packed solution that has been working flawlessly.
@@ -6,9 +7,11 @@ I'm excited to share the final version of a project I've been developing: a high
 This post contains the complete overview, changelog, and detailed setup guide. The final scripts are provided at the end for you to use in your own projects. Enjoy!
 
 Project Overview
+
 This project provides a complete solution for creating a robust, reliable, and feature-rich LoRa-based remote control and monitoring system for a garage door using two Shelly devices. The system is designed for low-bandwidth LoRa communication, provides detailed user feedback, and maintains high reliability through a smart, event-driven architecture.
 
 System Architecture 🏗️
+
 The system uses a two-device approach for maximum efficiency and reliability.
 
 🧠 Remote Device (The Brains): A Shelly 1 (Gen3 or newer) with a LoRa addon, connected directly to the garage door motor and a single "door closed" sensor. This device runs the core state machine, meaning it intelligently tracks the door's position and operates the motor locally.
@@ -16,6 +19,7 @@ The system uses a two-device approach for maximum efficiency and reliability.
 📡 Controller Device (The Hub): Any Shelly (Gen3 or newer) that supports a LoRa addon (e.g., a Shelly 1PM) and has a WiFi connection. This device acts as the user interface, hosting virtual components in the Shelly app for control and status monitoring.
 
 Security & Failsafe Features 🛡️
+
 Encrypted Communication: All LoRa messages between the devices are secured with AES encryption.
 
 Command Acknowledgment (ACK) & Retry: The Controller waits for a reply from the Remote after sending a command. If no reply is received, it flags a "No Reply" error (E5) on the UI and retries the command once.
