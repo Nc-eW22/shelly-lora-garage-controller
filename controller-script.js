@@ -44,7 +44,13 @@ let retryGuardTimer = null, isWaitingForReply = false, didRetry = false, vcTrigg
 
 // --- UTILITY FUNCTIONS ---
 function fromHex(h){const b=new Uint8Array(h.length/2);for(let i=0;i<b.length;i++){b[i]=parseInt(h.substr(i*2,2),16);}return b.buffer;}
-function strToUint8(s){const a=new Uint8Array(s.length);for(let i=0;i<s.length;i++){a[i]=s.charCodeAt(i);return a;}
+function strToUint8(s){
+  const a=new Uint8Array(s.length);
+  for(let i=0;i<s.length;i++){
+    a[i]=s.charCodeAt(i);
+  }
+  return a;
+}
 function uint8ToStr(b){let s="",v=new Uint8Array(b);for(let i=0;i<v.length;i++)s+=String.fromCharCode(v[i]);return s;}
 function generateChecksum(m){let c=0;for(let i=0;i<m.length;i++)c^=m.charCodeAt(i);let h=c.toString(16);while(h.length<CONFIG.CHECKSUM_SIZE)h='0'+h;return h.slice(-CONFIG.CHECKSUM_SIZE);}
 function verifyMessage(m){if(m.length<CONFIG.CHECKSUM_SIZE)return null;const r=m.slice(0,CONFIG.CHECKSUM_SIZE),c=m.slice(CONFIG.CHECKSUM_SIZE),e=generateChecksum(c);return(r===e)?c:null;}
